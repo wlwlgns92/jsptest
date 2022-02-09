@@ -15,48 +15,60 @@ function work() {
 	var fdate = document.getElementById("signupform").fdate.value;
 	var ftime = document.getElementById("signupform").ftime.value
 
-	
-	if(!material1 && !material2) {
+	if (!material1 && !material2) {
 		document.getElementById("materialmsg").innerHTML = "작업상태를 체크해주세요";
-	}else {
+		return false;
+	} else {
 		document.getElementById("materialmsg").innerHTML = "체크";
 	}
-	
-	if(printing == null) {
+
+	if (!printing1 && !printing2) {
 		document.getElementById("printingmsg").innerHTML = "작업상태를 체크해주세요";
-	}else {
+		return false;
+	} else {
 		document.getElementById("printingmsg").innerHTML = "체크";
 	}
-	
-	if(coating == null) {
+
+	if (!coating1 && !coating2) {
 		document.getElementById("coatingmsg").innerHTML = "작업상태를 체크해주세요";
-	}else {
+		return false;
+	} else {
 		document.getElementById("coatingmsg").innerHTML = "체크";
 	}
-	
-	if(stick == null) {
+
+	if (!stick1 && !stick2) {
 		document.getElementById("stickmsg").innerHTML = "작업상태를 체크해주세요";
-	}else {
+		return false;
+	} else {
 		document.getElementById("stickmsg").innerHTML = "체크";
 	}
-	
-	if(bond == null) {
+
+	if (!bond1 && !bond2) {
 		document.getElementById("bondmsg").innerHTML = "작업상태를 체크해주세요";
-	}else {
+		return false;
+	} else {
 		document.getElementById("bondmsg").innerHTML = "체크";
 	}
 	
-	if(fdate == "") {
+	if (!packing1 && !packing2) {
+		document.getElementById("packingmsg").innerHTML = "작업상태를 체크해주세요";
+		return false;
+	} else {
+		document.getElementById("packingmsg").innerHTML = "체크";
+	}
+
+
+	if (fdate == "") {
 		document.getElementById("fdatemsg").innerHTML = "날짜를 입력해 주세요 ";
-	}else {
+		return false;
+	} else {
 		document.getElementById("fdatemsg").innerHTML = "체크";
 	}
-	
-	if(ftime == "") {
-		document.getElementById("ftimemsg").innerHTML = "시간을 입력해 주세요 ";
-	}else {
+
+	if (ftime == "") {
+		document.getElementById("ftimemsg").innerHTML = "시간을 입력해 주세요";
+		return false;
+	} else {
 		document.getElementById("ftimemsg").innerHTML = "체크";
 	}
-	
-	
 }

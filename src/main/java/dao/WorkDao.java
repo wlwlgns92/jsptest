@@ -11,29 +11,47 @@ public class WorkDao extends DB {
 	public static WorkDao getWorkDao() {
 		return workDao;
 	}
+	
+	
+	
+	public int getno() {
+		
+		String sql = "select max(no) from work";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				return rs.getInt(1);
+			}
+		}
+		catch (Exception e) {}
+		return -1;
+	}
+	
 
-	// µî·Ï
+	// ï¿½ï¿½ï¿½
 	public boolean worksignup(WorkDto workDto) {
-		String sql = "insert into work(material, printing, coating, stick, bond, packing, fdate, ftime) values(?,?,?,?,?,?,?,?)";
+		String sql = "insert into work( no , material, printing, coating, stick, bond, packing, fdate, ftime) values( ?,?,?,?,?,?,?,?,?)";
 
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setString(1, workDto.getMaterial());
-			ps.setString(2, workDto.getPrinting());
-			ps.setString(3, workDto.getCoating());
-			ps.setString(4, workDto.getStick());
-			ps.setString(5, workDto.getBond());
-			ps.setString(6, workDto.getPacking());
-			ps.setString(7, workDto.getFdate());
-			ps.setString(8, workDto.getFtime());
+			ps.setInt(1, workDto.getNo());
+			ps.setString(2, workDto.getMaterial());
+			ps.setString(3, workDto.getPrinting());
+			ps.setString(4, workDto.getCoating());
+			ps.setString(5, workDto.getStick());
+			ps.setString(6, workDto.getBond());
+			ps.setString(7, workDto.getPacking());
+			ps.setString(8, workDto.getFdate());
+			ps.setString(9, workDto.getFtime());
 			ps.executeUpdate();
 			return true;
-		} catch (Exception e) {
+		} catch (Exception e) { System.out.print( e );
 		}
 		return false;
 	}
 
-	// ¸®½ºÆ®
+	// ï¿½ï¿½ï¿½ï¿½Æ®
 	public ArrayList<WorkDto> worklist() {
 		ArrayList<WorkDto> workDtos = new ArrayList<WorkDto>();
 		String sql = "select * from work";
@@ -48,7 +66,7 @@ public class WorkDao extends DB {
 			System.out.println(workDtos.toString());
 			return workDtos;
 		} catch (Exception e) {
-			System.out.println("Á¶È¸¿À·ù " + e);
+			System.out.println("ï¿½ï¿½È¸ï¿½ï¿½ï¿½ï¿½ " + e);
 		}
 		return null;
 	}

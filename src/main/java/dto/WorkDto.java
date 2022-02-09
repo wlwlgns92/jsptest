@@ -1,6 +1,7 @@
 package dto;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class WorkDto {
@@ -21,6 +22,7 @@ public class WorkDto {
 
 	public WorkDto(int no, String material, String printing, String coating, String stick, String bond, String packing,
 			String fdate, String ftime) {
+		super();
 		this.no = no;
 		this.material = material;
 		this.printing = printing;
@@ -28,30 +30,7 @@ public class WorkDto {
 		this.stick = stick;
 		this.bond = bond;
 		this.packing = packing;
-		Date today = new Date();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-		try {
-			Date date = dateFormat.parse(fdate);
-			this.fdate = dateFormat.format(date);
-		} catch (Exception e) {}
-		this.ftime = ftime;
-	}
-
-	
-	public WorkDto(String material, String printing, String coating, String stick, String bond, String packing,
-			String fdate, String ftime) {
-		this.material = material;
-		this.printing = printing;
-		this.coating = coating;
-		this.stick = stick;
-		this.bond = bond;
-		this.packing = packing;
-		Date today = new Date();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-		try {
-			Date date = dateFormat.parse(fdate);
-			this.fdate = dateFormat.format(date);
-		} catch (Exception e) {}
+		this.fdate = fdate;
 		this.ftime = ftime;
 	}
 
@@ -126,6 +105,10 @@ public class WorkDto {
 	public void setFtime(String ftime) {
 		this.ftime = ftime;
 	}
+	
+	
+	
+	
 
 	
 	

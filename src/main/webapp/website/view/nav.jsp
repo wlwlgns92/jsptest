@@ -26,7 +26,7 @@ color: white;
 			<li><a href="#">작업지시서조회</a></li>
 			<li><a href="/jsptest/website/view/work/signup.jsp">작업공정등록</a></li>
 			<li><a href="/jsptest/website/view/work/list.jsp">작업공정조회</a></li>
-			<li><a href="#">홈으로</a></li>
+			<li><a href="/jsptest/website/view/index.jsp">홈으로</a></li>
 		</ul>
 	</div>
 </body>

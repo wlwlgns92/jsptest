@@ -1,8 +1,9 @@
+
 <%@page import="dto.WorkDto"%>
 <%@page import="dao.WorkDao"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,24 +12,28 @@
 <style type="text/css">
 table {
 	width: 70%;
-    margin-left:15%; 
-    margin-right:15%;
+	margin-left: 15%;
+	margin-right: 15%;
 }
+
 table, td, th {
-    border-collapse : collapse;
-    border : 1px solid black;
-    text-align: center;
-};
+	border-collapse: collapse;
+	border: 1px solid black;
+	text-align: center;
+}
+;
 </style>
 </head>
 <body>
-<%@include file="../header.jsp" %>
+	<%@include file="../header.jsp"%>
 
-<%@include file="../nav.jsp" %>
+	<%@include file="../nav.jsp"%>
+
+
 	<%
 	ArrayList<WorkDto> workDtos = WorkDao.getWorkDao().worklist();
 	%>
-	
+
 	<table id="table">
 		<tr>
 			<th>번호</th>
@@ -41,20 +46,72 @@ table, td, th {
 			<th>최종일자</th>
 			<th>최종시간</th>
 		</tr>
-		<% for(WorkDto workDto : workDtos) {%>
+		<%
+		if (workDtos.size() == 0) {
+		%>
 		<tr>
-		<td><%=workDto.getNo() %></td>
-		<td><%=workDto.getMaterial() %></td>
-		<td><%=workDto.getPrinting() %></td>
-		<td><%=workDto.getCoating() %></td>
-		<td><%=workDto.getStick() %></td>
-		<td><%=workDto.getBond() %></td>
-		<td><%=workDto.getPacking() %></td>
-		<td><%=workDto.getFdate() %></td>
-		<td><%=workDto.getFtime() %></td>
+			<td style="text-align: center;">게시물이 없습니다.</td>
 		</tr>
-		<%} %>
+		<%
+		}
+		%>
+		<%
+		for (WorkDto workDto : workDtos) {
+		%>
+		<tr>
+			<td><%=workDto.getNo()%></td>
+			<%if (workDto.getMaterial().equals("작업중")) {%>
+			<td>-</td>
+			<%} else {%>
+			<td><%=workDto.getMaterial()%></td>
+			<%}	%>
+			
+			<%if (workDto.getPrinting().equals("작업중")) {%>
+			<td>-</td>
+			<%} else {%>
+			<td><%=workDto.getPrinting()%></td>
+			<%}	%>
+			
+			<%if (workDto.getCoating().equals("작업중")) {%>
+			<td>-</td>
+			<%} else {%>
+			<td><%=workDto.getCoating()%></td>
+			<%}	%>
+			
+			<%if (workDto.getStick().equals("작업중")) {%>
+			<td>-</td>
+			<%} else {%>
+			<td><%=workDto.getStick()%></td>
+			<%}	%>
+			
+			<%if (workDto.getBond().equals("작업중")) {%>
+			<td>-</td>
+			<%} else {%>
+			<td><%=workDto.getBond()%></td>
+			<%}	%>
+			
+			<%if (workDto.getPacking().equals("작업중")) {%>
+			<td>-</td>
+			<%} else {%>
+			<td><%=workDto.getPacking()%></td>
+			<%}	%>
+
+			<%
+			StringBuffer buffer = new StringBuffer(workDto.getFdate());
+			buffer.insert(4, "-");
+			buffer.insert(7, "-");
+
+			StringBuffer buffer2 = new StringBuffer(workDto.getFtime());
+			buffer2.insert(2, ":");
+			%>
+
+			<td><%=buffer.toString()%></td>
+			<td><%=buffer2.toString()%></td>
+		</tr>
+		<%
+		}
+		%>
 	</table>
-	<%@include file="../footer.jsp" %>
+	<%@include file="../footer.jsp"%>
 </body>
 </html>

@@ -1,3 +1,7 @@
+<%@page import="java.time.LocalDateTime"%>
+<%@page import="java.sql.Time"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="dao.WorkDao"%>
 <%@page import="dto.WorkDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -11,6 +15,8 @@
 <body>
 	<%
 		request.setCharacterEncoding("UTF-8");
+	
+	int no = Integer.parseInt( request.getParameter("no") );
 	String material = request.getParameter("material");
 	String printing = request.getParameter("printing");
 	String coating = request.getParameter("coating");
@@ -20,18 +26,28 @@
 	String fdate = request.getParameter("fdate");
 	String ftime = request.getParameter("ftime");
 	
-	WorkDto workDto = new WorkDto(material,printing,coating,stick,bond,packing,fdate,ftime);
+	System.out.println( no );
+	System.out.println( material );
+	System.out.println( printing );
+	System.out.println( coating );
+	System.out.println( stick );
+	System.out.println( bond );
+	System.out.println( packing );
+	System.out.println( fdate );
+	System.out.println( ftime );
+	
+	
+
+	WorkDto workDto = new WorkDto( no , material , printing , coating , stick , bond , packing , fdate , ftime  );
+	
+	
 	boolean result = WorkDao.getWorkDao().worksignup(workDto);
 	if(result) {
-	%>
-	<script type="text/javascript"> alert("등록성공")</script>
-	<%
-	response.sendRedirect("../view/index.jsp");
+		out.print("<script>alert('등록 완료');</script>");
+        out.println("<script>location.href='../view/index.jsp';</script>");
 	}else {
-	%>
-		<script type="text/javascript"> alert("등록실패")</script>
-	<%
-	response.sendRedirect("../view/work/signup.jsp");
+		out.print("<script>alert('등록 실패');</script>");
+        out.println("<script>location.href='../view/work/signup.jsp';</script>");
 	}
 	%>
 </body>
