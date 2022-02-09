@@ -14,6 +14,7 @@
 </style>
 </head>
 <body>
+	<script type="text/javascript" src="/jsptest/website/js/work.js"></script>
 	<div id="headerdiv">
 		<h3>(과정평가형 정보처리산업기사) 스마트공장 공정관리 프로그램 ver2019-09</h3>
 	</div>
