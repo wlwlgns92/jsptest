@@ -8,6 +8,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+table {
+	width: 70%;
+    margin-left:15%; 
+    margin-right:15%;
+}
+table, td, th {
+    border-collapse : collapse;
+    border : 1px solid black;
+    text-align: center;
+};
+</style>
 </head>
 <body>
 <%@include file="../header.jsp" %>
@@ -16,7 +28,8 @@
 	<%
 	ArrayList<WorkDto> workDtos = WorkDao.getWorkDao().worklist();
 	%>
-	<table>
+	
+	<table id="table">
 		<tr>
 			<th>번호</th>
 			<th>재료</th>
@@ -42,5 +55,6 @@
 		</tr>
 		<%} %>
 	</table>
+	<%@include file="../footer.jsp" %>
 </body>
 </html>
