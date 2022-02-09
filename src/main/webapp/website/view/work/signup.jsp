@@ -19,8 +19,8 @@
 		합지공정 <input type="radio" name="stick" value="완료">완료 <input type="radio" name="stick" value="작업중"> 작업중	<br>
 		접합공정 <input type="radio" name="bond" value="완료">완료 <input type="radio" name="bond" value="작업중"> 작업중	<br>
 		포장공정 <input type="radio" name="packing" value="완료">완료 <input type="radio" name="packing" value="작업중"> 작업중	<br>
-		최종작업일자 <input type="text" name="fdate"> 예) 20190101 <br>
-		최종작업시간 <input type="text" name="ftime"> 예) 1300
+		최종작업일자 <input type="date" name="fdate"> 예) 20190101 <br>
+		최종작업시간 <input type="time" name="ftime"> 예) 1300
 		<input type="submit" value="공정등록">
 	</form> 
 </body>

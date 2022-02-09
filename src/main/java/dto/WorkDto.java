@@ -1,5 +1,8 @@
 package dto;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class WorkDto {
 
 	private int no;
@@ -25,7 +28,12 @@ public class WorkDto {
 		this.stick = stick;
 		this.bond = bond;
 		this.packing = packing;
-		this.fdate = fdate;
+		Date today = new Date();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+		try {
+			Date date = dateFormat.parse(fdate);
+			this.fdate = dateFormat.format(date);
+		} catch (Exception e) {}
 		this.ftime = ftime;
 	}
 
@@ -38,7 +46,12 @@ public class WorkDto {
 		this.stick = stick;
 		this.bond = bond;
 		this.packing = packing;
-		this.fdate = fdate;
+		Date today = new Date();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+		try {
+			Date date = dateFormat.parse(fdate);
+			this.fdate = dateFormat.format(date);
+		} catch (Exception e) {}
 		this.ftime = ftime;
 	}
 
