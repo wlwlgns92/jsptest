@@ -7,7 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+	<%@include file="../header.jsp" %>
+
+	<%@include file="../nav.jsp" %>
 	<form id="signupform" action="../../controller/signupcontroller.jsp" method="get">
 	<h3>작업공정등록</h3>
 		작업지시번호<input type="text">예) 20190001 <br>
